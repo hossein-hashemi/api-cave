@@ -1,4 +1,4 @@
-export interface Bottle {
-  name: string;
-  price: number;
+export interface TotalPrice {
+  toEuro: () => number;
+  toDollar: () => number;
 }

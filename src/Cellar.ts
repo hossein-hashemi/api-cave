@@ -1,9 +1,14 @@
-import {Bottle} from "./Bottle";
+import {Bottle} from './Bottle';
+import { CellarDTO } from './cellar.controller';
 
 export class Cellar {
   bottleList: Bottle[] = [];
+  name: string;
+  id: number;
 
-  constructor() {
+  constructor(name: string, storage: Cellar[]) {
+    this.name = name;
+    this.id = storage.length;
   }
 
   addBottle(bottle: Bottle): void {
@@ -11,28 +16,15 @@ export class Cellar {
   }
 
   getBottle(name: string): Bottle {
-    for (let i = 0 ; i< this.bottleList.length ; i++){
+    for (let i = 0 ; i < this.bottleList.length ; i++){
       if (this.bottleList[i].name === name){
         return this.bottleList[i];
       }
     }
-    throw new Error("Cette bouteille n'est pas dans la liste");
+    throw new Error('Cette bouteille pas dans la liste');
   }
 
-  getTotalPrice(): number {
+  /*getTotalPrice(): number {
 
-  }
+  }*/
 }
-
-function main() {
-  let cellar = new Cellar();
-  let bottle1: Bottle = {name: "drPepper", price: 5};
-  let bottle2: Bottle = {name: "Coca", price: 6};
-  cellar.addBottle(bottle1);
-  cellar.addBottle(bottle2);
-  console.log(JSON.stringify(cellar));
-  bottle2 = cellar.getBottle("Coca");
-  console.log(JSON.stringify(bottle2));
-}
-
-main();
